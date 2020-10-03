@@ -1,0 +1,13 @@
+@import "../mixins";
+@import "../variables";
+
+.toolbar{
+    @include actionBlock($header-height, $toolbar-height, rgb(166, 255, 175), 7px 10px);
+
+    border-top: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+
+    .button{
+        @include button(rgb(10, 213, 33));  
+    }
+}
