@@ -5,9 +5,8 @@
   "main": "webpack.config.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --open",
-    "build": "webpack --mode production",
-    "dev": "webpack --mode development"
+    "start": "cross-env NODE_ENV=development webpack-dev-server --open",
+    "build": "cross-env NODE_ENV=production webpack --mode production"
   },
   "repository": {
     "type": "git",
@@ -23,28 +22,32 @@
     "url": "https://github.com/TossACoinToUrProgrammer/js-advanced-course/issues"
   },
   "homepage": "https://github.com/TossACoinToUrProgrammer/js-advanced-course#readme",
-  "browserlist": ">0.25%, not dead",
+  "browserslist": ">0.25%, not dead",
   "devDependencies": {
-    "@babel/core": "^7.11.6",
-    "@babel/preset-env": "^7.11.5",
+    "@babel/core": "^7.8.4",
+    "@babel/plugin-proposal-class-properties": "^7.8.3",
+    "@babel/preset-env": "^7.8.4",
     "babel-eslint": "^10.1.0",
-    "babel-loader": "^8.1.0",
+    "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
-    "copy-webpack-plugin": "^6.1.1",
-    "css-loader": "^4.3.0",
-    "eslint": "^7.10.0",
+    "copy-webpack-plugin": "^5.1.1",
+    "cross-env": "^7.0.0",
+    "css-loader": "^3.4.2",
+    "eslint": "^6.8.0",
     "eslint-config-google": "^0.14.0",
-    "eslint-loader": "^4.0.2",
-    "html-webpack-plugin": "^4.5.0",
-    "mini-css-extract-plugin": "^0.11.2",
-    "sass": "^1.26.11",
-    "sass-loader": "^10.0.2",
-    "webpack": "^4.44.2",
-    "webpack-cli": "^3.3.12",
+    "eslint-loader": "^3.0.3",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.9.0",
+    "node-sass": "^4.14.1",
+    "sass-loader": "^8.0.2",
+    "ts-loader": "^8.0.4",
+    "typescript": "^4.0.3",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^3.11.0"
   },
   "dependencies": {
-    "@babel/polyfill": "^7.11.5",
+    "@babel/polyfill": "^7.8.3",
     "normalize.css": "^8.0.1"
   }
 }
