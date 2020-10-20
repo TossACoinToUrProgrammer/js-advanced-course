@@ -7,22 +7,22 @@ const CODES: CODES = {
   Z: 90,
 };
 
-function toCell(): string {
+function toCell(_: any, index: number): string {
   return `
-    <div class="cell" contenteditable></div>
+    <div class="cell" data-col='${index}' contenteditable></div>
   `;
 }
 
-function toColumn(col: string): string {
+function toColumn(col: string, index: number): string {
   return `
-    <div class="columns">${col}</div>
+    <div class="column" data-col='${index}' data-type="resizable">${col}<div class='col-resize' data-resize='col'></div></div>
   `;
 }
 
 function createRow(index: number, content: string): string {
   return `
-    <div class="row">
-      <div class="row-info">${index ? index : ''}</div>
+    <div class="row" data-type="resizable">
+      <div class="row-info">${index ? index + "<div class='row-resize' data-resize='row'></div>" : ''}</div>
       <div class="row-data">${content}</div>
     </div>
   `;

@@ -31,12 +31,36 @@ class Dom {
     return this;
   }
 
+  getCoords() {
+    return this.$el.getBoundingClientRect();
+  }
+
+  closest(selector) {
+    return $(this.$el.closest(selector));
+  }
+
+  get data() {
+    return this.$el.dataset;
+  }
+
+  findAll(selector) {
+    return this.$el.querySelectorAll(selector);
+  }
+
+  css(style = {}) {
+    Object.keys(style).forEach(key => this.$el.style[key] = style[key]);
+  }
+
   on(eventType, func) {
     return this.$el.addEventListener(eventType, func);
   }
 
   off(eventType, func) {
     this.$el.removeEventListener(eventType, func);
+  }
+
+  remove() {
+    this.$el.remove();
   }
 }
 
