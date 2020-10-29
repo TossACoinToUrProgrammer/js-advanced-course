@@ -4,7 +4,11 @@ class Dom {
     document.querySelector(selector) :
     selector;
   }
-
+  toHtml() {
+    const $container = document.createElement('div');
+    $container.append(this.$el);
+    return $container.innerHTML;
+  }
   html(html='') {
     if (typeof html ==='string') {
       this.$el.innerHTML = html;
@@ -30,7 +34,9 @@ class Dom {
     }
     return this;
   }
-
+  hasClass(selector) {
+    return this.$el.classList.contains(selector);
+  }
   getCoords() {
     return this.$el.getBoundingClientRect();
   }
@@ -42,7 +48,9 @@ class Dom {
   get data() {
     return this.$el.dataset;
   }
-
+  find(selector) {
+    return $(this.$el.querySelector(selector));
+  }
   findAll(selector) {
     return this.$el.querySelectorAll(selector);
   }
@@ -58,9 +66,49 @@ class Dom {
   off(eventType, func) {
     this.$el.removeEventListener(eventType, func);
   }
+  id(parse) {
+    if (parse) {
+      const parsed = this.id().split(':');
+      return {
+        row: +parsed[0],
+        col: +parsed[1],
+      };
+    }
+    return this.data.id;
+  }
+  text(text) {
+    let key = 'textContent';
+    if (this.$el.tagName === 'Input') key = 'value';
+    if (typeof text === 'string') {
+      this.$el[key] = text;
+    }
+    return this.$el[key];
+  }
+  focus() {
+    const range = document.createRange();
+    const sel = window.getSelection();
 
+    range.setStart(this.$el, 1);
+    range.collapse(true);
+
+    sel.removeAllRanges();
+    sel.addRange(range);
+
+    this.$el.focus();
+    this.$el.scrollIntoView({block: 'nearest', inline: 'nearest'});
+    return this;
+  }
   remove() {
     this.$el.remove();
+  }
+  addClass(className) {
+    this.$el.classList.add(className);
+  }
+  removeClass(className) {
+    this.$el.classList.remove(className);
+  }
+  insert(pos = 'beforeend', html = '') {
+    this.$el.insertAdjacentHTML(pos, html);
   }
 }
 

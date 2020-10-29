@@ -48,7 +48,7 @@
         position: absolute;
         bottom: 0;
         right: 0;
-        background: #3c74ff;
+        background: $success;
         opacity: 0;
         z-index: 1000;
     
@@ -84,7 +84,25 @@
     }
     .selected{
         border: none;
-        outline: 2px solid #3c74ff;
+        outline: 2px solid $success;
+        position: relative;
     }
-
+    .selection-resize-btn{
+        right: 0;
+        bottom: 0;
+        position: absolute;
+        display: block;
+        width: 7px;
+        height: 7px;
+        margin-right: -4px;
+        margin-bottom: -4px;
+        z-index: 1000;
+        background: $success;
+        cursor: se-resize;
+        border: 1px solid white;
+        caret-color: transparent;
+    }
+    .preselect-group{
+        background-color: purple;
+    }
 }

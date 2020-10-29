@@ -7,10 +7,12 @@ const CODES: CODES = {
   Z: 90,
 };
 
-function toCell(_: any, index: number): string {
-  return `
-    <div class="cell" data-col='${index}' contenteditable></div>
-  `;
+function toCell(row:number) {
+  return (_: any, col: number):string => {
+    return `
+      <div class="cell" data-row='${row}' data-id='${row+':'+col}' data-col='${col}' contenteditable></div>
+    `;
+  }
 }
 
 function toColumn(col: string, index: number): string {
@@ -44,13 +46,13 @@ export function createTable(rowsCount: number = 15): string {
 
   rows.push(createRow(null, cols));
 
-  for (let i = 0; i < rowsCount; i++) {
+  for (let row = 0; row < rowsCount; row++) {
     const cells = new Array(colsCount)
         .fill('')
-        .map(toCell)
+        .map(toCell(row))
         .join('');
 
-    rows.push(createRow(i + 1, cells));
+    rows.push(createRow(row + 1, cells));
   }
 
   return rows.join('');
