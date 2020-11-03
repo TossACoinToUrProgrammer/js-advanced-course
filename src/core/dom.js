@@ -82,7 +82,7 @@ class Dom {
     if (typeof text === 'string') {
       this.$el[key] = text;
     }
-    return this.$el[key];
+    return this.$el[key].trim();
   }
   focus() {
     const range = document.createRange();

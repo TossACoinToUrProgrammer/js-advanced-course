@@ -15,8 +15,7 @@
     background: #eee;
     cursor: pointer;
   }
-  &:active,
-  .active {
+  &:active, &.active {
     color: $color;
   }
 }
